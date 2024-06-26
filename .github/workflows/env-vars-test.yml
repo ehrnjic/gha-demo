@@ -1,0 +1,29 @@
+name: env var tests
+
+on:
+
+  workflow_dispatch:
+
+env:
+  WF_VAR1: workflow-level-var-1
+  WF_VAR2: workflow-level-var-2
+
+
+jobs:
+
+  first-job:
+    env: 
+      VAR1: variable-1
+      VAR2: variable-2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: print wf level vars
+        run: |
+          echo WF_VAR1
+          echo WF_VAR2
+
+      - name: print job level vars
+        run: |
+          echo VAR1
+          echo VAR2
